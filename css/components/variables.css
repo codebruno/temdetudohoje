@@ -1,0 +1,166 @@
+/* Variáveis CSS */
+:root {
+    --primary-color: #343a40; /* Cor do footer e navbar */
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+    --text-color: #fff; /* Cor do texto no footer e navbar */
+    --card-hover-color: rgba(0, 0, 0, 0.1);
+    --btn-primary-color: #007bff;
+    --btn-primary-hover-color: #0056b3;
+    --menu-link-color: #e9ecef; /* Cor dos itens do menu */
+    --menu-link-hover-color: #007bff; /* Cor dos itens do menu ao passar o mouse */
+    --shadow-color: rgba(0, 0, 0, 0.5); /* Cor do box shadow */
+    --social-icon-hover-color: #007bff; /* Cor dos ícones das redes sociais ao passar o mouse */
+    --banner-bg-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente para banners */
+    --banner-text-color: #fff; /* Cor do texto nos banners */
+}
+
+/* Estilos gerais */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+}
+
+/* Navbar */
+header {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-color);
+    top: 0;
+    width: 100%;
+    z-index: 1030;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff8c00, #ff4500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Menu Navbar */
+.navbar-nav .nav-link {
+    color: var(--menu-link-color);
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--menu-link-hover-color);
+}
+
+/* Carousel */
+.carousel-caption {
+    background-color: var(--banner-bg-color);
+    padding: 20px;
+    border-radius: 0.5rem;
+    text-shadow: 0 0 5px var(--shadow-color);
+}
+
+.carousel-caption h5, .carousel-caption p {
+    color: var(--banner-text-color);
+    margin: 0;
+}
+
+.carousel-caption h5 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.carousel-caption p {
+    font-size: 1.25rem;
+}
+
+/* Cards */
+.card {
+    border: 1px solid var(--secondary-color);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-hover {
+    transition: box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.img-zoom {
+    transition: transform 0.3s ease;
+}
+
+.card-hover:hover .img-zoom {
+    transform: scale(1.1);
+}
+
+.image-container {
+    position: relative;
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.img-secondary {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.card:hover .img-primary {
+    opacity: 0;
+}
+
+.card:hover .img-secondary {
+    opacity: 1;
+}
+
+/* Botões */
+.btn-primary {
+    background-color: var(--btn-primary-color);
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--btn-primary-hover-color);
+}
+
+/* Sobre */
+#sobre h2, #sobre p {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    border-radius: 0.5rem;
+    color: #fff;
+    text-shadow: 0 0 5px var(--shadow-color);
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-color);
+    text-align: center;
+    padding: 1rem;
+}
+
+footer a {
+    color: var(--text-color);
+}
+
+footer a:hover {
+    color: #007bff;
+}
+
+/* Redes Sociais */
+footer .social-icons a {
+    color: var(--text-color);
+    margin: 0 10px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+footer .social-icons a:hover {
+    color: var(--social-icon-hover-color);
+    transform: scale(1.2);
+}
