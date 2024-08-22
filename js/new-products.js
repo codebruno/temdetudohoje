@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Array com os dados dos produtos
     let novosProdutos = [
         { img: 'assets/image/fone.svg', title: 'Fone De Ouvido Sem Fio E6s Bluetooth 5.0 Tws Preto', description: 'Microfone Embutido, Cancelamento de Ruído, Controle Remoto, Resistente a Suor, Controle de Volume', link: 'https://s.shopee.com.br/9pKvUVKG4d', video: 'assets/video/fone-1.mp4' },
-        { img: 'https://via.placeholder.com/300x200', title: 'Novo Produto 2', description: 'Descrição 2', link: '#', video: 'assets/video/video-3.mp4' },
+        { img: 'assets/image/massagem.svg', title: 'Pistola de Massagem Elétrica', description: 'Arma multifuncional com visor, possui 6 velocidades/frequência ajustáveis ​​e 4 pontas de cabeça de massagem de borracha intercambiáveis.', link: 'https://s.shopee.com.br/700k9YRMCZ', video: 'assets/video/massageador.mp4' },
         { img: 'https://via.placeholder.com/300x200', title: 'Novo Produto 3', description: 'Descrição 3', link: '#', video: 'assets/video/video-4.mp4' },
         { img: 'https://via.placeholder.com/300x200', title: 'Novo Produto 4', description: 'Descrição 4', link: '#', video: 'assets/video/video-5.mp4' },
         { img: 'https://via.placeholder.com/300x200', title: 'Novo Produto 5', description: 'Descrição 5', link: '#', video: 'assets/video/video-6.mp4' },
