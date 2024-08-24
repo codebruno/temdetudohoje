@@ -1,20 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
     const products = {
         electronics: [
-            { id: 1, title: 'Eletrônico 1', description: 'Descrição do Eletrônico 1', videoSrc: 'videos/eletronico1.mp4', affiliateLink: 'https://afiliado.com/eletronico1' },
-            { id: 2, title: 'Eletrônico 2', description: 'Descrição do Eletrônico 2', videoSrc: 'videos/eletronico2.mp4', affiliateLink: 'https://afiliado.com/eletronico2' },
-            { id: 3, title: 'Eletrônico 3', description: 'Descrição do Eletrônico 3', videoSrc: 'videos/eletronico3.mp4', affiliateLink: 'https://afiliado.com/eletronico3' },
-            { id: 4, title: 'Eletrônico 4', description: 'Descrição do Eletrônico 4', videoSrc: 'videos/eletronico4.mp4', affiliateLink: 'https://afiliado.com/eletronico4' },
-            { id: 5, title: 'Eletrônico 5', description: 'Descrição do Eletrônico 5', videoSrc: 'videos/eletronico5.mp4', affiliateLink: 'https://afiliado.com/eletronico5' },
-            { id: 6, title: 'Eletrônico 6', description: 'Descrição do Eletrônico 6', videoSrc: 'videos/eletronico6.mp4', affiliateLink: 'https://afiliado.com/eletronico6' }
+            { id: 1, title: 'Eletrônico 1', description: 'Descrição do Eletrônico 1', videoSrc: 'videos/eletronico1.mp4', affiliateLink: 'https://example.com/affiliatelink?product=1' },
+            { id: 2, title: 'Eletrônico 2', description: 'Descrição do Eletrônico 2', videoSrc: 'videos/eletronico2.mp4', affiliateLink: 'https://example.com/affiliatelink?product=2' },
+            { id: 3, title: 'Eletrônico 3', description: 'Descrição do Eletrônico 3', videoSrc: 'videos/eletronico3.mp4', affiliateLink: 'https://example.com/affiliatelink?product=3' },
+            { id: 4, title: 'Eletrônico 4', description: 'Descrição do Eletrônico 4', videoSrc: 'videos/eletronico4.mp4', affiliateLink: 'https://example.com/affiliatelink?product=4' },
+            { id: 5, title: 'Eletrônico 5', description: 'Descrição do Eletrônico 5', videoSrc: 'videos/eletronico5.mp4', affiliateLink: 'https://example.com/affiliatelink?product=5' },
+            { id: 6, title: 'Eletrônico 6', description: 'Descrição do Eletrônico 6', videoSrc: 'videos/eletronico6.mp4', affiliateLink: 'https://example.com/affiliatelink?product=6' }
         ],
         pets: [
-            { id: 1, title: 'Pet 1', description: 'Descrição do Pet 1', videoSrc: 'videos/pet1.mp4', affiliateLink: 'https://afiliado.com/pet1' },
-            { id: 2, title: 'Pet 2', description: 'Descrição do Pet 2', videoSrc: 'videos/pet2.mp4', affiliateLink: 'https://afiliado.com/pet2' },
-            { id: 3, title: 'Pet 3', description: 'Descrição do Pet 3', videoSrc: 'videos/pet3.mp4', affiliateLink: 'https://afiliado.com/pet3' },
-            { id: 4, title: 'Pet 4', description: 'Descrição do Pet 4', videoSrc: 'videos/pet4.mp4', affiliateLink: 'https://afiliado.com/pet4' },
-            { id: 5, title: 'Pet 5', description: 'Descrição do Pet 5', videoSrc: 'videos/pet5.mp4', affiliateLink: 'https://afiliado.com/pet5' },
-            { id: 6, title: 'Pet 6', description: 'Descrição do Pet 6', videoSrc: 'videos/pet6.mp4', affiliateLink: 'https://afiliado.com/pet6' }
+            { id: 1, title: 'Pet 1', description: 'Descrição do Pet 1', videoSrc: 'videos/pet1.mp4', affiliateLink: 'https://example.com/affiliatelink?product=1' },
+            { id: 2, title: 'Pet 2', description: 'Descrição do Pet 2', videoSrc: 'videos/pet2.mp4', affiliateLink: 'https://example.com/affiliatelink?product=2' },
+            { id: 3, title: 'Pet 3', description: 'Descrição do Pet 3', videoSrc: 'videos/pet3.mp4', affiliateLink: 'https://example.com/affiliatelink?product=3' },
+            { id: 4, title: 'Pet 4', description: 'Descrição do Pet 4', videoSrc: 'videos/pet4.mp4', affiliateLink: 'https://example.com/affiliatelink?product=4' },
+            { id: 5, title: 'Pet 5', description: 'Descrição do Pet 5', videoSrc: 'videos/pet5.mp4', affiliateLink: 'https://example.com/affiliatelink?product=5' },
+            { id: 6, title: 'Pet 6', description: 'Descrição do Pet 6', videoSrc: 'videos/pet6.mp4', affiliateLink: 'https://example.com/affiliatelink?product=6' }
         ],
         // Outras categorias
     };
@@ -28,6 +28,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let cachedProducts = {
         electronics: [],
         pets: []
+    };
+
+    let loadMoreState = {
+        electronics: 'Mais Produtos',
+        pets: 'Mais Produtos'
     };
 
     function createProductCard(product) {
@@ -48,43 +53,57 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
     }
 
-    function loadProducts(category, startIndex) {
+    function updateProductList(category, productsToShow) {
         const productList = document.getElementById(`product-list-${category}`);
-        const loadMoreBtn = document.getElementById(`loadMoreBtn-${category}`);
+        productList.innerHTML = productsToShow.map(createProductCard).join('');
+    }
+
+    function loadProducts(category, startIndex) {
         const categoryProducts = products[category];
         const endIndex = Math.min(startIndex + productsPerPage, categoryProducts.length);
-        const visibleProducts = categoryProducts.slice(startIndex, endIndex);
+        const visibleProducts = categoryProducts.slice(0, endIndex);
 
         // Armazena os produtos carregados em cache
-        cachedProducts[category].push(...visibleProducts);
-
-        // Adiciona os produtos ao DOM
-        productList.innerHTML = cachedProducts[category].map(createProductCard).join('');
-
-        // Atualiza a quantidade de produtos carregados
+        cachedProducts[category] = visibleProducts;
         loadedProducts[category] = endIndex;
 
-        // Atualiza a visibilidade do botão de "Carregar mais"
-        if (endIndex >= categoryProducts.length) {
-            loadMoreBtn.style.display = 'none';
+        // Atualiza a lista de produtos
+        updateProductList(category, cachedProducts[category]);
+
+        // Atualiza o estado do botão de "Carregar mais"
+        loadMoreState[category] = endIndex >= categoryProducts.length ? 'Ver Menos' : 'Mais Produtos';
+        updateLoadMoreButton(category);
+    }
+
+    function updateLoadMoreButton(category) {
+        const loadMoreBtn = document.getElementById(`loadMoreBtn-${category}`);
+        loadMoreBtn.textContent = loadMoreState[category];
+    }
+
+    function toggleProducts(category) {
+        const categoryProducts = products[category];
+        const loadMoreBtn = document.getElementById(`loadMoreBtn-${category}`);
+
+        if (loadMoreState[category] === 'Mais Produtos') {
+            loadProducts(category, loadedProducts[category]);
+            document.getElementById(`product-list-${category}`).scrollIntoView({ behavior: 'smooth' });
         } else {
-            loadMoreBtn.style.display = 'block';
+            const visibleProductsCount = Math.max(loadedProducts[category] - productsPerPage, 4);
+            const visibleProducts = categoryProducts.slice(0, visibleProductsCount);
+            updateProductList(category, visibleProducts);
+            loadedProducts[category] = visibleProductsCount;
+
+            if (visibleProductsCount === 4) {
+                loadMoreState[category] = 'Mais Produtos';
+            }
+            updateLoadMoreButton(category);
         }
     }
 
     function initializeTab(category) {
-        const productList = document.getElementById(`product-list-${category}`);
-        const loadMoreBtn = document.getElementById(`loadMoreBtn-${category}`);
-
-        // Se já carregamos produtos previamente, usa o cache
         if (cachedProducts[category].length > 0) {
-            productList.innerHTML = cachedProducts[category].map(createProductCard).join('');
-            // Verifica se já carregamos todos os produtos para ocultar o botão
-            if (loadedProducts[category] >= products[category].length) {
-                loadMoreBtn.style.display = 'none';
-            } else {
-                loadMoreBtn.style.display = 'block';
-            }
+            updateProductList(category, cachedProducts[category]);
+            updateLoadMoreButton(category);
         } else {
             loadProducts(category, 0);
         }
@@ -100,9 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('[id^=loadMoreBtn-]').forEach(button => {
         button.addEventListener('click', function() {
             const category = this.id.replace('loadMoreBtn-', '');
-            const startIndex = loadedProducts[category];
-            loadProducts(category, startIndex);
-            document.getElementById(`product-list-${category}`).scrollIntoView({ behavior: 'smooth' });
+            toggleProducts(category);
         });
     });
 
