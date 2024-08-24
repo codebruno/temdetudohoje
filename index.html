@@ -25,7 +25,7 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#products">Produtos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#novos-produtos">Novos Produtos</a></li>
+                        <li class="nav-item"><a class="nav-link" target="_blank" href="blog.html">Blog</a></li>
                         <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
                     </ul>
                 </div>
@@ -47,7 +47,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <figure class="position-relative">
-                                <img src="https://via.placeholder.com/1200x500" class="d-block w-100" alt="Banner 1">
+                                <img src="assets/image/banner-1.svg" class="d-block w-100" alt="Banner 1">
                                 <figcaption class="carousel-caption d-none d-md-block">
                                     <h5>Ofertas Exclusivas</h5>
                                     <p>Descubra as melhores ofertas e promoções do mês.</p>
@@ -56,7 +56,7 @@
                         </div>
                         <div class="carousel-item">
                             <figure class="position-relative">
-                                <img src="https://via.placeholder.com/1200x500" class="d-block w-100" alt="Banner 2">
+                                <img src="assets/image/banner-2.svg" class="d-block w-100" alt="Banner 2">
                                 <figcaption class="carousel-caption d-none d-md-block">
                                     <h5>Novidades</h5>
                                     <p>Fique por dentro das novidades e lançamentos.</p>
@@ -65,7 +65,7 @@
                         </div>
                         <div class="carousel-item">
                             <figure class="position-relative">
-                                <img src="https://via.placeholder.com/1200x500" class="d-block w-100" alt="Banner 3">
+                                <img src="assets/image/banner-3.svg" class="d-block w-100" alt="Banner 3">
                                 <figcaption class="carousel-caption d-none d-md-block">
                                     <h5>Compre Agora</h5>
                                     <p>Compre agora e aproveite nossos descontos especiais.</p>
@@ -120,26 +120,20 @@
                     </div>
                 </div>
             </div>
-
              <!-- Modal for Video Playback -->
-            <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="videoModalLabel">Assistir Vídeo</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <video id="videoPlayer" controls class="w-100">
-                                Seu navegador não suporta a tag de vídeo.
-                            </video>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                        </div>
+             <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="videoModalLabel">Assistir Vídeo</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="modal-body">
+                      <video id="videoPlayer" controls style="width: 100%;"></video>
+                    </div>
+                  </div>
                 </div>
-            </div>
+              </div>
         </section>
         <!-- Sobre -->
         <section id="sobre" class="my-5">
@@ -181,5 +175,6 @@
     <script src="js/script.js"></script>
     <script src="js/products.js"></script>
     <script src="js/new-products.js"></script>
+    <script src="js/blog.js"></script>
 </body>
 </html>

@@ -1,20 +1,27 @@
 document.addEventListener('DOMContentLoaded', function() {
     const products = {
         electronics: [
-            { id: 1, title: 'Eletrônico 1', description: 'Descrição do Eletrônico 1', videoSrc: 'videos/eletronico1.mp4', affiliateLink: 'https://example.com/affiliatelink?product=1' },
-            { id: 2, title: 'Eletrônico 2', description: 'Descrição do Eletrônico 2', videoSrc: 'videos/eletronico2.mp4', affiliateLink: 'https://example.com/affiliatelink?product=2' },
-            { id: 3, title: 'Eletrônico 3', description: 'Descrição do Eletrônico 3', videoSrc: 'videos/eletronico3.mp4', affiliateLink: 'https://example.com/affiliatelink?product=3' },
-            { id: 4, title: 'Eletrônico 4', description: 'Descrição do Eletrônico 4', videoSrc: 'videos/eletronico4.mp4', affiliateLink: 'https://example.com/affiliatelink?product=4' },
-            { id: 5, title: 'Eletrônico 5', description: 'Descrição do Eletrônico 5', videoSrc: 'videos/eletronico5.mp4', affiliateLink: 'https://example.com/affiliatelink?product=5' },
-            { id: 6, title: 'Eletrônico 6', description: 'Descrição do Eletrônico 6', videoSrc: 'videos/eletronico6.mp4', affiliateLink: 'https://example.com/affiliatelink?product=6' }
+            { id: 1, title: 'Eletrônico 1', description: 'Descrição do Eletrônico 1', videoSrc: 'assets/video/fone-1.mp4', affiliateLink: 'https://example.com/affiliatelink?product=1', imageSrc: 'https://via.placeholder.com/200x150', stars: 4, bought: 120 },
+            { id: 2, title: 'Eletrônico 2', description: 'Descrição do Eletrônico 2', videoSrc: 'videos/eletronico2.mp4', affiliateLink: 'https://example.com/affiliatelink?product=2', imageSrc: 'https://via.placeholder.com/200x150', stars: 5, bought: 200 },
+            { id: 2, title: 'Eletrônico 2', description: 'Descrição do Eletrônico 2', videoSrc: 'videos/eletronico2.mp4', affiliateLink: 'https://example.com/affiliatelink?product=2', imageSrc: 'https://via.placeholder.com/200x150', stars: 5, bought: 200 },
+            { id: 2, title: 'Eletrônico 2', description: 'Descrição do Eletrônico 2', videoSrc: 'videos/eletronico2.mp4', affiliateLink: 'https://example.com/affiliatelink?product=2', imageSrc: 'https://via.placeholder.com/200x150', stars: 5, bought: 200 },
+            { id: 2, title: 'Eletrônico 2', description: 'Descrição do Eletrônico 2', videoSrc: 'videos/eletronico2.mp4', affiliateLink: 'https://example.com/affiliatelink?product=2', imageSrc: 'https://via.placeholder.com/200x150', stars: 5, bought: 200 },
+            { id: 2, title: 'Eletrônico 2', description: 'Descrição do Eletrônico 2', videoSrc: 'videos/eletronico2.mp4', affiliateLink: 'https://example.com/affiliatelink?product=2', imageSrc: 'https://via.placeholder.com/200x150', stars: 5, bought: 200 },
+            { id: 2, title: 'Eletrônico 2', description: 'Descrição do Eletrônico 2', videoSrc: 'videos/eletronico2.mp4', affiliateLink: 'https://example.com/affiliatelink?product=2', imageSrc: 'https://via.placeholder.com/200x150', stars: 5, bought: 200 },
+            { id: 2, title: 'Eletrônico 2', description: 'Descrição do Eletrônico 2', videoSrc: 'videos/eletronico2.mp4', affiliateLink: 'https://example.com/affiliatelink?product=2', imageSrc: 'https://via.placeholder.com/200x150', stars: 5, bought: 200 },
+            // outros produtos...
         ],
         pets: [
-            { id: 1, title: 'Pet 1', description: 'Descrição do Pet 1', videoSrc: 'videos/pet1.mp4', affiliateLink: 'https://example.com/affiliatelink?product=1' },
-            { id: 2, title: 'Pet 2', description: 'Descrição do Pet 2', videoSrc: 'videos/pet2.mp4', affiliateLink: 'https://example.com/affiliatelink?product=2' },
-            { id: 3, title: 'Pet 3', description: 'Descrição do Pet 3', videoSrc: 'videos/pet3.mp4', affiliateLink: 'https://example.com/affiliatelink?product=3' },
-            { id: 4, title: 'Pet 4', description: 'Descrição do Pet 4', videoSrc: 'videos/pet4.mp4', affiliateLink: 'https://example.com/affiliatelink?product=4' },
-            { id: 5, title: 'Pet 5', description: 'Descrição do Pet 5', videoSrc: 'videos/pet5.mp4', affiliateLink: 'https://example.com/affiliatelink?product=5' },
-            { id: 6, title: 'Pet 6', description: 'Descrição do Pet 6', videoSrc: 'videos/pet6.mp4', affiliateLink: 'https://example.com/affiliatelink?product=6' }
+            { id: 1, title: 'Pet 1', description: 'Descrição do Pet 1', videoSrc: 'videos/pet1.mp4', affiliateLink: 'https://example.com/affiliatelink?product=1', imageSrc: 'https://via.placeholder.com/200x150', stars: 5, bought: 220 },
+            { id: 1, title: 'Pet 1', description: 'Descrição do Pet 1', videoSrc: 'videos/pet1.mp4', affiliateLink: 'https://example.com/affiliatelink?product=1', imageSrc: 'https://via.placeholder.com/200x150', stars: 5, bought: 220 },
+            { id: 1, title: 'Pet 1', description: 'Descrição do Pet 1', videoSrc: 'videos/pet1.mp4', affiliateLink: 'https://example.com/affiliatelink?product=1', imageSrc: 'https://via.placeholder.com/200x150', stars: 5, bought: 220 },
+            { id: 1, title: 'Pet 1', description: 'Descrição do Pet 1', videoSrc: 'videos/pet1.mp4', affiliateLink: 'https://example.com/affiliatelink?product=1', imageSrc: 'https://via.placeholder.com/200x150', stars: 5, bought: 220 },
+            { id: 1, title: 'Pet 1', description: 'Descrição do Pet 1', videoSrc: 'videos/pet1.mp4', affiliateLink: 'https://example.com/affiliatelink?product=1', imageSrc: 'https://via.placeholder.com/200x150', stars: 5, bought: 220 },
+            { id: 1, title: 'Pet 1', description: 'Descrição do Pet 1', videoSrc: 'videos/pet1.mp4', affiliateLink: 'https://example.com/affiliatelink?product=1', imageSrc: 'https://via.placeholder.com/200x150', stars: 5, bought: 220 },
+            { id: 1, title: 'Pet 1', description: 'Descrição do Pet 1', videoSrc: 'videos/pet1.mp4', affiliateLink: 'https://example.com/affiliatelink?product=1', imageSrc: 'https://via.placeholder.com/200x150', stars: 5, bought: 220 },
+            { id: 1, title: 'Pet 1', description: 'Descrição do Pet 1', videoSrc: 'videos/pet1.mp4', affiliateLink: 'https://example.com/affiliatelink?product=1', imageSrc: 'https://via.placeholder.com/200x150', stars: 5, bought: 220 },
+            { id: 1, title: 'Pet 1', description: 'Descrição do Pet 1', videoSrc: 'videos/pet1.mp4', affiliateLink: 'https://example.com/affiliatelink?product=1', imageSrc: 'https://via.placeholder.com/200x150', stars: 5, bought: 220 },
+            // outros produtos...
         ],
         // Outras categorias
     };
@@ -36,16 +43,19 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     function createProductCard(product) {
+        const starRating = Array(product.stars).fill('★').join('') + Array(5 - product.stars).fill('☆').join('');
         return `
             <div class="col-md-3 mb-4">
                 <div class="card position-relative">
-                    <img src="https://via.placeholder.com/200x150" class="card-img-top" alt="${product.title}">
+                    <img src="${product.imageSrc}" class="card-img-top" alt="${product.title}">
                     <div class="video-overlay" data-video-src="${product.videoSrc}">
                         <i class="bi bi-play-circle"></i>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">${product.title}</h5>
                         <p class="card-text">${product.description}</p>
+                        <p class="card-stars">${starRating}</p>
+                        <p class="card-bought">Comprado: ${product.bought} vezes</p>
                         <a href="${product.affiliateLink}" class="btn btn-primary" target="_blank">Comprar</a>
                     </div>
                 </div>
@@ -63,14 +73,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const endIndex = Math.min(startIndex + productsPerPage, categoryProducts.length);
         const visibleProducts = categoryProducts.slice(0, endIndex);
 
-        // Armazena os produtos carregados em cache
         cachedProducts[category] = visibleProducts;
         loadedProducts[category] = endIndex;
 
-        // Atualiza a lista de produtos
         updateProductList(category, cachedProducts[category]);
 
-        // Atualiza o estado do botão de "Carregar mais"
         loadMoreState[category] = endIndex >= categoryProducts.length ? 'Ver Menos' : 'Mais Produtos';
         updateLoadMoreButton(category);
     }
@@ -123,14 +130,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Carrega os produtos para a aba inicial ativa
     const initialTab = document.querySelector('.nav-link.active');
     if (initialTab) {
         const initialCategory = initialTab.id.replace('-tab', '');
         initializeTab(initialCategory);
     }
 
-    // Funcionalidade do modal de vídeo
     document.addEventListener('click', function(event) {
         if (event.target.closest('.video-overlay')) {
             const card = event.target.closest('.card');
