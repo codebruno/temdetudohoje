@@ -1,20 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
     const products = {
         electronics: [
-            { id: 1, title: 'Eletrônico 1', description: 'Descrição do Eletrônico 1', videoSrc: 'videos/eletronico1.mp4' },
-            { id: 2, title: 'Eletrônico 2', description: 'Descrição do Eletrônico 2', videoSrc: 'videos/eletronico2.mp4' },
-            { id: 3, title: 'Eletrônico 3', description: 'Descrição do Eletrônico 3', videoSrc: 'videos/eletronico3.mp4' },
-            { id: 4, title: 'Eletrônico 4', description: 'Descrição do Eletrônico 4', videoSrc: 'videos/eletronico4.mp4' },
-            { id: 5, title: 'Eletrônico 5', description: 'Descrição do Eletrônico 5', videoSrc: 'videos/eletronico5.mp4' },
-            { id: 6, title: 'Eletrônico 6', description: 'Descrição do Eletrônico 6', videoSrc: 'videos/eletronico6.mp4' }
+            { id: 1, title: 'Eletrônico 1', description: 'Descrição do Eletrônico 1', videoSrc: 'videos/eletronico1.mp4', affiliateLink: 'https://afiliado.com/eletronico1' },
+            { id: 2, title: 'Eletrônico 2', description: 'Descrição do Eletrônico 2', videoSrc: 'videos/eletronico2.mp4', affiliateLink: 'https://afiliado.com/eletronico2' },
+            { id: 3, title: 'Eletrônico 3', description: 'Descrição do Eletrônico 3', videoSrc: 'videos/eletronico3.mp4', affiliateLink: 'https://afiliado.com/eletronico3' },
+            { id: 4, title: 'Eletrônico 4', description: 'Descrição do Eletrônico 4', videoSrc: 'videos/eletronico4.mp4', affiliateLink: 'https://afiliado.com/eletronico4' },
+            { id: 5, title: 'Eletrônico 5', description: 'Descrição do Eletrônico 5', videoSrc: 'videos/eletronico5.mp4', affiliateLink: 'https://afiliado.com/eletronico5' },
+            { id: 6, title: 'Eletrônico 6', description: 'Descrição do Eletrônico 6', videoSrc: 'videos/eletronico6.mp4', affiliateLink: 'https://afiliado.com/eletronico6' }
         ],
         pets: [
-            { id: 1, title: 'Pet 1', description: 'Descrição do Pet 1', videoSrc: 'videos/pet1.mp4' },
-            { id: 2, title: 'Pet 2', description: 'Descrição do Pet 2', videoSrc: 'videos/pet2.mp4' },
-            { id: 3, title: 'Pet 3', description: 'Descrição do Pet 3', videoSrc: 'videos/pet3.mp4' },
-            { id: 4, title: 'Pet 4', description: 'Descrição do Pet 4', videoSrc: 'videos/pet4.mp4' },
-            { id: 5, title: 'Pet 5', description: 'Descrição do Pet 5', videoSrc: 'videos/pet5.mp4' },
-            { id: 6, title: 'Pet 6', description: 'Descrição do Pet 6', videoSrc: 'videos/pet6.mp4' }
+            { id: 1, title: 'Pet 1', description: 'Descrição do Pet 1', videoSrc: 'videos/pet1.mp4', affiliateLink: 'https://afiliado.com/pet1' },
+            { id: 2, title: 'Pet 2', description: 'Descrição do Pet 2', videoSrc: 'videos/pet2.mp4', affiliateLink: 'https://afiliado.com/pet2' },
+            { id: 3, title: 'Pet 3', description: 'Descrição do Pet 3', videoSrc: 'videos/pet3.mp4', affiliateLink: 'https://afiliado.com/pet3' },
+            { id: 4, title: 'Pet 4', description: 'Descrição do Pet 4', videoSrc: 'videos/pet4.mp4', affiliateLink: 'https://afiliado.com/pet4' },
+            { id: 5, title: 'Pet 5', description: 'Descrição do Pet 5', videoSrc: 'videos/pet5.mp4', affiliateLink: 'https://afiliado.com/pet5' },
+            { id: 6, title: 'Pet 6', description: 'Descrição do Pet 6', videoSrc: 'videos/pet6.mp4', affiliateLink: 'https://afiliado.com/pet6' }
         ],
         // Outras categorias
     };
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="card-body">
                         <h5 class="card-title">${product.title}</h5>
                         <p class="card-text">${product.description}</p>
-                        <a href="https://example.com/affiliatelink?product=${product.id}" class="btn btn-primary" target="_blank">Comprar</a>
+                        <a href="${product.affiliateLink}" class="btn btn-primary" target="_blank">Comprar</a>
                     </div>
                 </div>
             </div>
