@@ -24,7 +24,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#produtos">Produtos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#products">Produtos</a></li>
                         <li class="nav-item"><a class="nav-link" href="#novos-produtos">Novos Produtos</a></li>
                         <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
                     </ul>
@@ -76,58 +76,66 @@
                 </div>
             </div>
         </section>
-
-        <!-- Seção de Produtos -->
-        <section id="produtos" class="my-5">
+        <!-- Seção de Produtos com Abas Dinâmicas e Uso de Figure -->
+        <section id="products">
             <div class="container">
                 <h2 class="text-center mb-4">Produtos</h2>
-                <div class="row" id="product-list"></div>
-                <div class="text-center mt-4">
-                    <button id="loadMoreBtn" class="btn btn-primary">Ver Mais Produtos</button>
+                <nav class="nav nav-tabs" id="productTabs">
+                    <a class="nav-link active" id="electronics-tab" data-bs-toggle="tab" href="#electronics">Eletrônicos</a>
+                    <a class="nav-link" id="pets-tab" data-bs-toggle="tab" href="#pets">Pets</a>
+                    <a class="nav-link" id="fitness-tab" data-bs-toggle="tab" href="#fitness">Fitness</a>
+                    <a class="nav-link" id="sports-tab" data-bs-toggle="tab" href="#sports">Esportes</a>
+                    <a class="nav-link" id="accessories-tab" data-bs-toggle="tab" href="#accessories">Acessórios</a>
+                </nav>
+                <div class="tab-content mt-3">
+                    <div class="tab-pane fade show active" id="electronics">
+                        <div class="row" id="product-list-electronics"></div>
+                        <div class="text-center mt-3">
+                            <button id="loadMoreBtn-electronics" class="btn btn-primary">Mais Produtos</button>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pets">
+                        <div class="row" id="product-list-pets"></div>
+                        <div class="text-center mt-3">
+                            <button id="loadMoreBtn-pets" class="btn btn-primary">Mais Produtos</button>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="fitness">
+                        <div class="row" id="product-list-fitness"></div>
+                        <div class="text-center mt-3">
+                            <button id="loadMoreBtn-fitness" class="btn btn-primary">Mais Produtos</button>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="sports">
+                        <div class="row" id="product-list-sports"></div>
+                        <div class="text-center mt-3">
+                            <button id="loadMoreBtn-sports" class="btn btn-primary">Mais Produtos</button>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="accessories">
+                        <div class="row" id="product-list-accessories"></div>
+                        <div class="text-center mt-3">
+                            <button id="loadMoreBtn-accessories" class="btn btn-primary">Mais Produtos</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
 
-       <!-- Modal -->
-        <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="videoModalLabel">Vídeo do Produto</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- O vídeo será carregado aqui pelo JavaScript -->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Novos Produtos -->
-        <section id="novos-produtos" class="my-5">
-            <div class="container">
-                <h2 class="text-center mb-4">Novos Produtos</h2>
-                <div id="novos-produtos-list" class="row">
-                    <!-- Produtos serão carregados aqui dinamicamente -->
-                </div>
-                <!-- Botão de Carregar Mais -->
-                <div class="text-center mt-4">
-                    <button id="loadMoreNovosBtn" class="btn btn-secondary">Ver Mais Produtos</button>
-                </div>
-            </div>
-        
-            <!-- Modal para Vídeos -->
+             <!-- Modal for Video Playback -->
             <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="videoModalLabel">Vídeo do Produto</h5>
+                            <h5 class="modal-title" id="videoModalLabel">Assistir Vídeo</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <!-- O vídeo será carregado aqui -->
+                            <video id="videoPlayer" controls class="w-100">
+                                Seu navegador não suporta a tag de vídeo.
+                            </video>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                         </div>
                     </div>
                 </div>

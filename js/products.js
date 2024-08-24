@@ -1,85 +1,127 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const productList = document.getElementById('product-list');
-    const loadMoreBtn = document.getElementById('loadMoreBtn');
-    
-    // Array com os dados dos produtos, incluindo vídeos locais
-    let products = [
-        { img: 'assets/image/3x1.svg', title: 'Escova A Vapor Para Gatos Cães 3 Em 1', description: 'Escova elétrica 3 em 1 com tecnologia a vapor para uma pelagem limpa e saudável.', link: 'https://s.shopee.com.br/5VBwFtPV3D', video: 'assets/video/video-1.mp4' },
-        { img: 'https://via.placeholder.com/300x200', title: 'Produto 2', description: 'Descrição 2', link: '#', video: 'assets/video/video-2.mp4' },
-        { img: 'https://via.placeholder.com/300x200', title: 'Produto 3', description: 'Descrição 3', link: '#', video: 'assets/video/video-3.mp4' },
-        { img: 'https://via.placeholder.com/300x200', title: 'Produto 4', description: 'Descrição 4', link: '#', video: 'assets/video/video-4.mp4' },
-        { img: 'https://via.placeholder.com/300x200', title: 'Produto 5', description: 'Descrição 5', link: '#', video: 'assets/video/video-5.mp4' },
-        { img: 'https://via.placeholder.com/300x200', title: 'Produto 6', description: 'Descrição 6', link: '#', video: 'assets/video/video-6.mp4' },
-        { img: 'https://via.placeholder.com/300x200', title: 'Produto 7', description: 'Descrição 7', link: '#', video: 'assets/video/video-7.mp4' },
-        { img: 'https://via.placeholder.com/300x200', title: 'Produto 8', description: 'Descrição 8', link: '#', video: 'assets/video/video-8.mp4' },
-        { img: 'https://via.placeholder.com/300x200', title: 'Produto 9', description: 'Descrição 9', link: '#', video: 'assets/video/video-9.mp4' },
-        { img: 'https://via.placeholder.com/300x200', title: 'Produto 10', description: 'Descrição 10', link: '#', video: 'assets/video/video-10.mp4' },
-        { img: 'https://via.placeholder.com/300x200', title: 'Produto 11', description: 'Descrição 11', link: '#', video: 'assets/video/video-11.mp4' },
-        { img: 'https://via.placeholder.com/300x200', title: 'Produto 12', description: 'Descrição 12', link: '#', video: 'assets/video/video-12.mp4' }
-    ];
+document.addEventListener('DOMContentLoaded', function() {
+    const products = {
+        electronics: [
+            { id: 1, title: 'Eletrônico 1', description: 'Descrição do Eletrônico 1', videoSrc: 'videos/eletronico1.mp4' },
+            { id: 2, title: 'Eletrônico 2', description: 'Descrição do Eletrônico 2', videoSrc: 'videos/eletronico2.mp4' },
+            { id: 3, title: 'Eletrônico 3', description: 'Descrição do Eletrônico 3', videoSrc: 'videos/eletronico3.mp4' },
+            { id: 4, title: 'Eletrônico 4', description: 'Descrição do Eletrônico 4', videoSrc: 'videos/eletronico4.mp4' },
+            { id: 5, title: 'Eletrônico 5', description: 'Descrição do Eletrônico 5', videoSrc: 'videos/eletronico5.mp4' },
+            { id: 6, title: 'Eletrônico 6', description: 'Descrição do Eletrônico 6', videoSrc: 'videos/eletronico6.mp4' }
+        ],
+        pets: [
+            { id: 1, title: 'Pet 1', description: 'Descrição do Pet 1', videoSrc: 'videos/pet1.mp4' },
+            { id: 2, title: 'Pet 2', description: 'Descrição do Pet 2', videoSrc: 'videos/pet2.mp4' },
+            { id: 3, title: 'Pet 3', description: 'Descrição do Pet 3', videoSrc: 'videos/pet3.mp4' },
+            { id: 4, title: 'Pet 4', description: 'Descrição do Pet 4', videoSrc: 'videos/pet4.mp4' },
+            { id: 5, title: 'Pet 5', description: 'Descrição do Pet 5', videoSrc: 'videos/pet5.mp4' },
+            { id: 6, title: 'Pet 6', description: 'Descrição do Pet 6', videoSrc: 'videos/pet6.mp4' }
+        ],
+        // Outras categorias
+    };
 
-    let itemsPerPage = 4;
-    let currentPage = 1;
+    const productsPerPage = 4;
+    let loadedProducts = {
+        electronics: 0,
+        pets: 0
+    };
 
-    // Função para carregar os produtos
-    function loadProducts(page) {
-        let startIndex = (page - 1) * itemsPerPage;
-        let endIndex = page * itemsPerPage;
+    let cachedProducts = {
+        electronics: [],
+        pets: []
+    };
 
-        let visibleProducts = products.slice(startIndex, endIndex);
+    function createProductCard(product) {
+        return `
+            <div class="col-md-3 mb-4">
+                <div class="card position-relative">
+                    <img src="https://via.placeholder.com/200x150" class="card-img-top" alt="${product.title}">
+                    <div class="video-overlay" data-video-src="${product.videoSrc}">
+                        <i class="bi bi-play-circle"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">${product.title}</h5>
+                        <p class="card-text">${product.description}</p>
+                        <a href="https://example.com/affiliatelink?product=${product.id}" class="btn btn-primary" target="_blank">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
 
-        visibleProducts.forEach(product => {
-            const productCard = `
-                <article class="col-md-3">
-                    <figure class="card card-hover">
-                        <div class="video-thumbnail-container">
-                            <img src="${product.img}" class="card-img-top" alt="${product.title}">
-                            <div class="play-overlay" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="${product.video}">
-                                <i class="bi bi-play-circle"></i>
-                            </div>
-                        </div>
-                        <figcaption class="card-body">
-                            <h5 class="card-title">${product.title}</h5>
-                            <p class="card-text">${product.description}</p>
-                            <a href="${product.link}" class="btn btn-primary" target="_blank">Comprar</a>
-                        </figcaption>
-                    </figure>
-                </article>`;
-            productList.innerHTML += productCard;
-        });
+    function loadProducts(category, startIndex) {
+        const productList = document.getElementById(`product-list-${category}`);
+        const loadMoreBtn = document.getElementById(`loadMoreBtn-${category}`);
+        const categoryProducts = products[category];
+        const endIndex = Math.min(startIndex + productsPerPage, categoryProducts.length);
+        const visibleProducts = categoryProducts.slice(startIndex, endIndex);
 
-        // Verifica se há mais produtos para carregar e mostra ou oculta o botão
-        if (endIndex >= products.length) {
-            loadMoreBtn.style.display = 'none'; // Oculta o botão se todos os produtos foram carregados
+        // Armazena os produtos carregados em cache
+        cachedProducts[category].push(...visibleProducts);
+
+        // Adiciona os produtos ao DOM
+        productList.innerHTML = cachedProducts[category].map(createProductCard).join('');
+
+        // Atualiza a quantidade de produtos carregados
+        loadedProducts[category] = endIndex;
+
+        // Atualiza a visibilidade do botão de "Carregar mais"
+        if (endIndex >= categoryProducts.length) {
+            loadMoreBtn.style.display = 'none';
         } else {
-            loadMoreBtn.style.display = 'block'; // Garante que o botão esteja visível se houver mais produtos
+            loadMoreBtn.style.display = 'block';
         }
     }
 
-    // Inicializa o carregamento dos produtos
-    loadProducts(currentPage);
+    function initializeTab(category) {
+        const productList = document.getElementById(`product-list-${category}`);
+        const loadMoreBtn = document.getElementById(`loadMoreBtn-${category}`);
 
-    // Evento de clique no botão "Carregar mais"
-    loadMoreBtn.addEventListener('click', function () {
-        currentPage++;
-        loadProducts(currentPage);
-    });
-
-    // Evento para carregar o vídeo local ao clicar no ícone de play
-    document.addEventListener('click', function (e) {
-        if (e.target.closest('.play-overlay')) {
-            let videoSrc = e.target.closest('.play-overlay').dataset.video;
-            let modalBody = document.querySelector('#videoModal .modal-body');
-            modalBody.innerHTML = `
-                <video class="w-100" height="400" controls>
-                    <source src="${videoSrc}" type="video/mp4">
-                    Seu navegador não suporta o elemento de vídeo.
-                </video>`;
+        // Se já carregamos produtos previamente, usa o cache
+        if (cachedProducts[category].length > 0) {
+            productList.innerHTML = cachedProducts[category].map(createProductCard).join('');
+            // Verifica se já carregamos todos os produtos para ocultar o botão
+            if (loadedProducts[category] >= products[category].length) {
+                loadMoreBtn.style.display = 'none';
+            } else {
+                loadMoreBtn.style.display = 'block';
+            }
+        } else {
+            loadProducts(category, 0);
         }
+    }
+
+    document.querySelectorAll('.nav-link').forEach(tab => {
+        tab.addEventListener('click', function() {
+            const category = this.id.replace('-tab', '');
+            initializeTab(category);
+        });
     });
 
-    // Limpa o vídeo do modal quando ele é fechado
-    document.querySelector('#videoModal').addEventListener('hidden.bs.modal', function () {
-        document.querySelector('#videoModal .modal-body').innerHTML = ''; // Limpa o vídeo ao fechar o modal
+    document.querySelectorAll('[id^=loadMoreBtn-]').forEach(button => {
+        button.addEventListener('click', function() {
+            const category = this.id.replace('loadMoreBtn-', '');
+            const startIndex = loadedProducts[category];
+            loadProducts(category, startIndex);
+            document.getElementById(`product-list-${category}`).scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // Carrega os produtos para a aba inicial ativa
+    const initialTab = document.querySelector('.nav-link.active');
+    if (initialTab) {
+        const initialCategory = initialTab.id.replace('-tab', '');
+        initializeTab(initialCategory);
+    }
+
+    // Funcionalidade do modal de vídeo
+    document.addEventListener('click', function(event) {
+        if (event.target.closest('.video-overlay')) {
+            const card = event.target.closest('.card');
+            const videoSrc = card.querySelector('.video-overlay').getAttribute('data-video-src');
+            const videoPlayer = document.getElementById('videoPlayer');
+            videoPlayer.setAttribute('src', videoSrc);
+            const videoModal = new bootstrap.Modal(document.getElementById('videoModal'));
+            videoModal.show();
+        }
     });
 });

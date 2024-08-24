@@ -70,97 +70,43 @@ header {
 }
 
 /* Cards */
+
 .card {
-    border: 1px solid var(--secondary-color);
-    border-radius: 0.5rem;
+    position: relative;
     overflow: hidden;
-    position: relative;
-}
-
-.card-hover {
-    transition: box-shadow 0.3s ease;
-}
-
-.card-hover:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.img-zoom {
-    transition: transform 0.3s ease;
-}
-
-.card-hover:hover .img-zoom {
-    transform: scale(1.1);
-}
-
-.image-container {
-    position: relative;
 }
 
 .card-img-top {
-    width: 100%;
-    height: auto;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease;
 }
 
-.img-secondary {
+.video-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px; /* Ajuste o tamanho conforme necessário */
+    height: 60px; /* Ajuste o tamanho conforme necessário */
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 5px; /* Arredondamento das bordas do overlay */
 }
 
-.card:hover .img-primary {
-    opacity: 0;
+.video-overlay i {
+    font-size: 1.5rem; /* Ajuste o tamanho do ícone conforme necessário */
+    color: #fff;
 }
 
-.card:hover .img-secondary {
+.card:hover .video-overlay {
     opacity: 1;
 }
 
-/* Botões */
-.btn-primary {
-    background-color: var(--btn-primary-color);
-    border: none;
+.card-body {
+    position: relative;
+    z-index: 1; /* Garante que o conteúdo do card esteja acima do overlay */
 }
 
-.btn-primary:hover {
-    background-color: var(--btn-primary-hover-color);
-}
-
-/* Sobre */
-#sobre h2, #sobre p {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 15px;
-    border-radius: 0.5rem;
-    color: #fff;
-    text-shadow: 0 0 5px var(--shadow-color);
-}
-
-/* Footer */
-footer {
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    color: var(--text-color);
-    text-align: center;
-    padding: 1rem;
-}
-
-footer a {
-    color: var(--text-color);
-}
-
-footer a:hover {
-    color: #007bff;
-}
-
-/* Redes Sociais */
-footer .social-icons a {
-    color: var(--text-color);
-    margin: 0 10px;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-footer .social-icons a:hover {
-    color: var(--social-icon-hover-color);
-    transform: scale(1.2);
-}
